@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: fluxchat
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -k eventlet -w 1 app:app
+    envVars:
+      - key: SECRET_KEY
+        sync: false
+
+      - key: DB_USER
+        sync: false
+
+      - key: DB_PASSWORD
+        sync: false
+
+      - key: DB_HOST
+        sync: false
+
+      - key: DB_NAME
+        sync: false
+
+      - key: SQLALCHEMY_DATABASE_URI
+        sync: false
+
+      - key: UPLOAD_FOLDER
+        value: static/uploads
